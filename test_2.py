@@ -13,6 +13,7 @@ We will begin with a main() function to start the program.
 """
 
 """
+
 main()
     infile = open Final.txt
     grades = line.rstrip()
@@ -33,3 +34,30 @@ main()
 
 
 """
+
+
+
+def calculate_percent_above_average(grades, average):
+    count = 0
+    for grade in grades:
+        if grade > average:
+            count += 1
+    return (count * 100) / len(grades)
+
+
+def main():
+    file = open('Final.txt')
+    grades = []
+    for line in file:
+        grades.append(int(line.strip()))
+    print("Number of grades:", len(grades))
+    average = 0
+    for grade in grades:
+        average += grade
+    average /= len(grades)
+    print("Average grade:", average)
+    print("Percentage of grades above average: {:.2f}%".format(calculate_percent_above_average(grades, average)))
+    file.close()
+
+
+main()
